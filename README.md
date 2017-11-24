@@ -1,5 +1,7 @@
-Symfony magazine - posts with tags and authors
+Symfony magazine 
 ========
+
+Posts with tags and posts with authors.
 
 ## How to use it?
 - Clone repo.
@@ -7,8 +9,9 @@ Symfony magazine - posts with tags and authors
 - Execute few bash commands:
 ```bash
 composer install
-php bin/console doctrine:schema:update --force
-php bin/console doctrine:fixtures:load
-php bin/console server:run
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+php app/console doctrine:fixtures:load
+php app/console server:run
 ```
 

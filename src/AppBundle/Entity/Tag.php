@@ -13,8 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag implements TagInterface
 {
-    const MAX_PER_POST = 3;
-
     /**
      * @var int
      *
