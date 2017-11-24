@@ -1,0 +1,13 @@
+<div>
+    {% if tags %}
+        {% for tag in tags %}
+            <a href="{{ path('post_tagged', {'id': tag.id}) }}">{{ tag.name }}</a>
+
+            {% if not loop.last %}
+                --
+            {%endif%}
+        {% endfor %}
+    {% else %}
+        No tags found
+    {% endif %}
+</div>

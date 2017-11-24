@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ post.title }}</h1>
+
+    {% if post.author %}
+        <p>Author: <strong><a href="{{ post.author.website }}">{{ post.author.name }}</a></strong></p>
+    {% endif %}
+
+    <p>Published at: <strong>{{ post.publishedDate|date("d.m.Y") }}</strong></p>
+
+    <p>{{ post.text }}</p>
+
+    --------
+
+    {% if post.tags|length > 0 %}
+        <p><strong>Tags:</strong></p>
+        {{ include('magazine/_tags.html.twig', { 'tags': post.tags }) }}
+    {% endif %}
+
+    <br>
+
+    --------
+
+    <br>
+
+    <a href="{{ path('post_edit', {'slug': post.slug, 'postType': post.type}) }}">Edit post</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block nav %}
+            <h3>Menu</h3>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('index') }}">Home (Posts by tags)</a></li>
+                    <li><a href="{{ path('post_all') }}">All posts</a></li>
+                    <li><a href="{{ path('post_authored') }}">Authored posts</a></li>
+                    <li><a href="{{ path('post_new', {'postType': 'regular'}) }}">Create new post</a></li>
+                    <li><a href="{{ path('post_new', {'postType': 'authored'}) }}">Create new authored post</a></li>
+                </ul>
+            </nav>
+
+            <hr>
+            
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

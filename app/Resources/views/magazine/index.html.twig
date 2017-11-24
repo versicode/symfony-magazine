@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Welcome!</h1>
+    <p>Use menu or check our tags:</p>
+    {{ include('magazine/_tags.html.twig', { 'tags': tags }) }}
+{% endblock %}
+
