@@ -52,11 +52,11 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/post/{slug}/edit/{postType}", name="post_edit", requirements={"postType": "(regular|authored)"})
+     * @Route("/post/{slug}/edit", name="post_edit")
      */
-    public function editAction(Request $request, Post $post, $postType = Post::TYPE_REGULAR)
+    public function editAction(Request $request, Post $post)
     {
-        if ($postType === Post::TYPE_AUTHORED) {
+        if ($post->getType() === Post::TYPE_AUTHORED) {
             $formType = AuthoredPostType::class;
         } else {
             $formType = RegularPostType::class;
