@@ -43,9 +43,8 @@ class MagazineController extends Controller
     public function authoredAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $posts = $em->getRepository(Post::class)->findBy(array(
-            'type' => Post::TYPE_AUTHORED
-        ));
+
+        $posts = $em->getRepository(Post::class)->findByType(Post::TYPE_AUTHORED);
 
         return $this->render('magazine/posts.html.twig', array(
             'posts' => $posts,

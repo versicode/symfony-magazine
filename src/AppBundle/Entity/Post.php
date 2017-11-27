@@ -18,7 +18,7 @@ use AppBundle\Entity\Author;
  *
  * @ORM\Table(name="posts")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\EntityListeners({"AppBundle\EventListener\PostListener"})
  */
 class Post implements TaggableInterface
 {
@@ -117,14 +117,6 @@ class Post implements TaggableInterface
         $this->type         = self::TYPE_REGULAR;
         $this->createdDate  = new \DateTime();
         $this->updatedDate  = $this->getCreatedDate();
-    }
-
-    /**
-     * @ORM\PreUpdate()
-     */
-    public function preUpdate()
-    {
-        $this->setUpdatedDate(new \DateTime());
     }
 
     /**

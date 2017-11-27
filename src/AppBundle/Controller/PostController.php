@@ -32,15 +32,12 @@ class PostController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setType($postType);
-            $post->setSlug($this->get('slugger')->slugify($post->getTitle()));
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
 
-            $this->get('session')
-                 ->getFlashBag()
-                 ->set('notice', 'Post created!');
+            $this->addFlash('notice', 'Post created!');
 
             return $this->redirectToRoute('post_all');
         }
@@ -71,9 +68,7 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            $this->get('session')
-                 ->getFlashBag()
-                 ->set('notice', 'Post updated!');
+            $this->addFlash('notice', 'Post updated!');
 
             return $this->redirectToRoute('post_all');
         }

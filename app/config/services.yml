@@ -9,3 +9,9 @@ services:
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
     slugger:
         class: AppBundle\Utils\Slugger
+
+    post_listener:
+        class: AppBundle\EventListener\PostListener
+        arguments: ['@slugger']
+        tags:
+            - { name: doctrine.orm.entity_listener}
